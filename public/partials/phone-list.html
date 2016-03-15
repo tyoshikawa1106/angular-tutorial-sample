@@ -1,0 +1,42 @@
+<div>
+  <div class="slds-grid slds-wrap slds-grid--pull-padded">
+    <!--Sidebar content-->
+    <nav class="slds-col slds-large-size--3-of-12 slds-size--1-of-1 slds-p-horizontal--small">
+      <!-- Search -->
+      <div class="slds-form-element">
+        <label class="slds-form-element__label">Search</label>
+        <div class="slds-form-element__control">
+          <input ng-model="query" class="slds-input" type="text" placeholder="" />
+        </div>
+        <div class="slds-form-element__help"></div>
+      </div>
+      <!-- Sort -->
+      <div class="slds-form-element">
+        <label class="slds-form-element__label">Sort by</label>
+        <div class="slds-form-element__control">
+          <select ng-model="orderProp" class="slds-select">
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+          </select>
+        </div>
+        <div class="slds-form-element__help"></div>
+      </div>
+    </nav>
+    <!--Body content-->
+    <main class="slds-col slds-large-size--9-of-12 slds-size--1-of-1 slds-p-horizontal--small">
+      <!-- Phone List -->
+      <ul class="phones">
+        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
+            class="thumbnail phone-listing">
+          <!-- Phone Image -->
+          <a href="#/phones/{{phone.id}}" class="thumb">
+            <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}">
+          </a>
+          <!-- Phone Name -->
+          <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+          <p>{{phone.snippet}}</p>
+        </li>
+      </ul>
+    </main>
+  </div>
+</div>
